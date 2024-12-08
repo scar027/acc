@@ -1,30 +1,27 @@
 public class Main {
-  // Function to calculate Euler's Totient Function
-  static int phi(int n) {
-    int result = n; // Initialize result as n
 
-    // Consider all prime factors of n
-    for (int p = 2; p * p <= n; p++) {
-      // Check if p is a factor of n
-      if (n % p == 0) {
-        // If yes, then update result and remove p from n
-        while (n % p == 0) {
-          n /= p;
+    // Function to return GCD of a and b
+    static int gcd(int a, int b) {
+        if (a == 0) {
+            return b;
         }
-        result -= result / p;
-      }
+        return gcd(b % a, a);
     }
 
-    // If n has a prime factor greater than √n
-    if (n > 1) {
-      result -= result / n;
+    // Function to calculate Euler's Totient function (phi)
+    static int phi(int n) {
+        int result = 1;  // Start with 1 because we will count numbers from 2 onwards.
+        for (int i = 2; i < n; i++) {
+            if (gcd(i, n) == 1) {
+                result++;
+            }
+        }
+        return result;
     }
 
-    return result;
-  }
-
-  public static void main(String[] args) {
-    int n = 5; // Change this value for a different input
-    System.out.println("Euler's Totient Function value for " + n + " is: " + phi(n));
-  }
+    public static void main(String[] args) {
+        int n = 5;
+        // Finding Phi for input n
+        System.out.println(phi(n));
+    }
 }
