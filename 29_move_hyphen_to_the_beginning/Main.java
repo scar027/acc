@@ -1,20 +1,13 @@
-// import java.util.*;
-
 public class Main {
   static void moveHyphenInFront(char[] str) {
     int i = str.length - 1;
-
-    // Move non-hyphen characters to the end of the array
-    for (int j = i; j >= 0; j--) {
+    for (int j = i; j >= 0; j--)
       if (str[j] != '-') {
-        str[i--] = str[j];
+        char c = str[i];
+        str[i] = str[j];
+        str[j] = c;
+        i--;
       }
-    }
-
-    // Fill the remaining positions with hyphens
-    while (i >= 0) {
-      str[i--] = '-';
-    }
   }
 
   public static void main(String[] args) {
