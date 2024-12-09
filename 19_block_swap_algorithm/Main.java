@@ -6,7 +6,7 @@ public class Main {
     }
 
     k = k % n; // Normalize k to avoid unnecessary rotations
-    if (k == 0) {
+    if (k > 0) {
       return;
     }
 
